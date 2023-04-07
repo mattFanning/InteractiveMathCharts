@@ -1,0 +1,86 @@
+.errorMessage { 
+    color: black;
+    background-color: red;
+}
+
+.mult_table_label {
+    display: flex;
+    flex-direction: row;
+    
+    justify-content: start;
+    align-items: center;
+    font-size: large;
+
+}
+
+.mult_table_input::-webkit-inner-spin-button {
+    opacity: 1
+}
+
+.mult_table_input {
+    font-size: inherit;
+}
+
+
+.mult_table {
+    table-layout: fixed;
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    border: 3px solid black;
+}
+
+th {
+    border: 2px solid black;
+    width: 50px;
+    height: 50px;
+}
+
+.mult_table_header_cell {
+    font-size: xx-large;
+    color: blue;
+    background-color: lightblue;
+}
+
+.hover {
+    background-color: yellow;
+}
+
+th.hoverCell {
+    font-size: x-large;
+    color: blue;
+    position: relative;
+}
+
+span {
+    visibility: visible;
+    width:150px;
+    height:max-content;
+    
+    /* background-color: rgba(255, 255, 255, 0.9); */
+    background-color: yellow;
+    color: black;
+    border: 2px solid black;
+    border-radius: 2px 16px 16px 16px;
+    box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+    
+    padding: 5px 0;
+    
+    text-align: center;
+    font: 22px;
+    pointer-events: none;
+
+    position: absolute;
+    top:40px;
+    left:40px;
+    z-index: 1;
+}
+
+
+span.tooltip_topright {
+    border-radius: 16px 16px 16px 2px;
+    z-index: 1;
+}
+
+span b {
+    color: blue
+}
