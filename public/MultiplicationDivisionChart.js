@@ -1,8 +1,7 @@
-class InteractiveMultiplicationTable { 
-    constructor(parentTagId) {
-        this.parentId = parentTagId
-    }
-    
+import BaseMathTool from './BaseMathTool.js';
+
+class InteractiveMultiplicationTable extends BaseMathTool { 
+ 
     display() {
         $(this.parentId).append(`
             <h1>Interactive Multiplication Table</h1>

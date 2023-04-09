@@ -2,6 +2,7 @@
   "name": "interactivemathcharts",
   "version": "1.0.0",
   "description": "InteractiveMathCharts are hands-on tools used to assist in math exercises.",
+  "type":"module",
   "main": "demoModule.dnp.js",
   "directories": {
     "lib": "lib"
