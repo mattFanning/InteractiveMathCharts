@@ -7,4 +7,4 @@ node*.tmp.js
 node_modules
 
 #my way to prevent files from getting checked in until ready.  dnp = do not push!
-*.dnp.js
+*.dnp.*

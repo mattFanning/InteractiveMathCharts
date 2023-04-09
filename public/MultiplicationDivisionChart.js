@@ -1,10 +1,10 @@
-class InteractiveMultiplicationTable {
-    constructor(parentTableId) {
-        this.parentTableId = parentTableId
+class InteractiveMultiplicationTable { 
+    constructor(parentTagId) {
+        this.parentId = parentTagId
     }
     
     display() {
-        $(this.parentTableId).append(`
+        $(this.parentId).append(`
             <h1>Interactive Multiplication Table</h1>
                 <label class="mult_table_label">
                     <b>Dimensions:</b>
@@ -31,7 +31,7 @@ class InteractiveMultiplicationTable {
         }
         
         //table
-        $(this.parentTableId).append(`<table class="mult_table"></table>`)
+        $(this.parentId).append(`<table class="mult_table"></table>`)
         const $table = $('.mult_table')
 
         // add the header row
