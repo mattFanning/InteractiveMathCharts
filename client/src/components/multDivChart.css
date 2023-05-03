@@ -1,0 +1,99 @@
+:root {
+    --navbarBGImage: url('../../public/navbarImage.jpg');
+    
+    --titleFontColor: rgb(255, 255, 255);
+    --titleFontSize: 32px;
+    --titleFontBGColor:rgba(0, 0, 0, .2);
+
+    --inputColor: black;
+    --inputFontSize: large;
+    
+    --tableFontFamily: arial, sans-serif;
+    --tableFontSize: 20px;
+    --cellWidth: 50px;
+    --cellHeight: 50px;
+
+    --headerCellBGColor: lightblue;
+    --headerCellColor: blue;
+    --headerFontSize: xx-large;
+
+    --hoverBGColor: yellow;
+    --hoverColor: blue;
+    --hoverFontSize: 25px;
+
+    --errZorBGColor: red;
+    --errorColor: black;
+}
+
+div.multdiv_div {
+ padding: 10px;   
+}
+
+div.multdiv_div * {
+    align-items: center;
+}
+
+nav.navbar {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    background-image: var(--navbarBGImage);
+    padding-bottom: 0;
+    padding-left: 8px;
+}
+
+h1.multdiv_h1 {
+    color: var(--titleFontColor);
+    font-size: var(--titleFontSize);
+    background-color: var(--titleFontBGColor);
+}
+
+ul.multdiv_ul {
+    display: flex;
+    padding-left: 0px;
+    margin: 0;
+}
+
+li.multdiv_li {
+    display: flex;
+}
+
+input.multdiv_input {
+    overflow-y:scroll;
+}
+
+input.multdiv_input::-webkit-inner-spin-button {
+    opacity: 1
+}
+
+.padding-right {
+    padding-right: 10px;
+}
+
+table.multdiv_table {
+    font-family: var(--tableFontFamily);
+    font-size: var(--tableFontSize);
+    text-align: center;
+}
+
+
+th.multdiv_th {
+    border: 2px solid black;
+    width: var(--cellWidth);
+    height: var(--cellWidth);
+    background-color: var(--headerCellBGColor);
+    color: var(--headerCellColor);
+}
+
+td.multdiv_td {
+    border: 2px solid black;
+    width: var(--cellWidth);
+    height: var(--cellWidth);
+}
+
+th.multdiv_highlighted,
+td.multdiv_highlighted {
+    background-color: var(--hoverBGColor);
+    color: var(--hoverColor);
+    font-size: var(--hoverFontSize);
+}
