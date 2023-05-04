@@ -12,8 +12,7 @@ export default function MultDivChart() {
    const [tooltipData, setTooltipData] = useState({
       int1: "",
       int2: "",
-      top: "",
-      left: ""
+      targetElement: ""
    });
 
 
@@ -28,7 +27,8 @@ export default function MultDivChart() {
             }
          }
          setCellData(data);
-      }
+      };
+      
       fillCellData();
       return;
    },[dimensions.cols, dimensions.rows]);
@@ -74,11 +74,16 @@ export default function MultDivChart() {
    };
 
    function hoverTooltip() {
-      const {int1, int2, top, left} = tooltipData;
+      const {int1, int2, callerElement} = tooltipData;
 
       if(int1 == "" || int2 == "") {
          return("");  //don't show the hover div at all.
       } else {
+         const cellWidth = parseInt(getComputedStyle(callerElement).getPropertyValue('--cellWidth'));
+         const rect = callerElement.getBoundingClientRect();
+         const left = rect.left + window.scrollX + .75 * cellWidth;
+         const top = rect.top + window.scrollY + .75 * cellWidth;
+         
          const result = int1 * int2;
          return(
             <div className="multdiv_tooltip multdiv_display_flex" style={{'top':top, 'left': left}}>
@@ -86,7 +91,6 @@ export default function MultDivChart() {
             </div>
          );
       };
-
    };
 
    function mathEquations(int1, int2, result) {
@@ -112,7 +116,7 @@ export default function MultDivChart() {
          );
       };
       
-   }
+   };
 
 
    //Mouse Event Handlers
@@ -140,17 +144,11 @@ export default function MultDivChart() {
          }
       });
 
-      //tooltip position
-      const cellWidth = getComputedStyle(target).getPropertyValue('--cellWidth');
-      const xPos = target.offsetLeft + parseInt(cellWidth);
-      const yPos = target.offsetTop + 2.5 * parseInt(cellWidth) + 15;
-      
       //tooltip content
       const data_row = target.getAttribute('data-row');
       const data_col = target.getAttribute('data-col');
       
-      setTooltipData({int1: data_col, int2: data_row, top: yPos+'px', left: xPos+'px'});
-      
+      setTooltipData({int1: data_col, int2: data_row, callerElement: target});
    };
 
    function clearHighlightHover(event) {
@@ -158,8 +156,7 @@ export default function MultDivChart() {
       const affectedCells = document.querySelectorAll('.multdiv_highlighted');
       affectedCells.forEach(cell => cell.classList.remove("multdiv_highlighted"));
       
-      setTooltipData({int1: "", int2: "", top: "", left: ""});
-
+      setTooltipData({int1: "", int2: "", callerElement: ""});
    };
 
    
@@ -196,6 +193,7 @@ export default function MultDivChart() {
                {tableBody()}
             </tbody>
          </table>
+         <div className="multdiv_bottom_padding">filler</div>
          {hoverTooltip()}
       </div>
    );

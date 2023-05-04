@@ -2,6 +2,7 @@ import React from "react";
 
 // We import bootstrap to make our application look better.
 import "bootstrap/dist/css/bootstrap.css";
+import "./navbar.css"
 import "./multDivChart.css";
 
 // We import NavLink to utilize the react router.
@@ -13,19 +14,22 @@ export default function Navbar() {
       <div>
          <nav className="navbar navbar-expand-lg">
             <NavLink className="navbar-brand" to="/">
-               <h1 className="multdiv_h1">Interactive Math Charts</h1>
+               <ul className="imc_navbar_title_ul">
+                  <li className="imc_navbar_title_li">Interactive</li>
+                  <li className="imc_navbar_title_li">Math</li>
+                  <li className="imc_navbar_title_li">Charts</li>
+               </ul>
             </NavLink>
-
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
                <ul className="navbar-nav ml-auto">
-                  <li className="nav-item">
-                     <NavLink className="nav-link" to="/create">
+                  <li className="nav-item imc_navbar_navlink_li first">
+                     <NavLink className="nav-link imc_navbar_navlink" to="/create">
                         Create Record
                      </NavLink>
                   </li>
-                  <li className="nav-item">
-                     <NavLink className="nav-link" to="/multdivchart">
-                        MultDivChart
+                  <li className="nav-item imc_navbar_navlink_li">
+                     <NavLink className="nav-link imc_navbar_navlink" to="/multdivchart">
+                        Multiplication & Division Table
                      </NavLink>
                   </li>
                </ul>

@@ -154,3 +154,8 @@ hr.multdiv_tooltip_line_bold {
     margin-bottom: 10px;
     border-top: 3px solid black;
 }
+
+div.multdiv_bottom_padding {
+    height: 125px;
+    visibility: hidden;
+}
