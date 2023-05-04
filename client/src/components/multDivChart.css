@@ -19,10 +19,18 @@
 
     --hoverBGColor: yellow;
     --hoverColor: blue;
-    --hoverFontSize: 25px;
+    --hoverFontSize: 23px;
 
     --errZorBGColor: red;
     --errorColor: black;
+}
+
+.multdiv_display_flex {
+    display: flex;
+}
+
+.multdiv_display_none {
+    display: none;
 }
 
 div.multdiv_div {
@@ -95,5 +103,54 @@ th.multdiv_highlighted,
 td.multdiv_highlighted {
     background-color: var(--hoverBGColor);
     color: var(--hoverColor);
+}
+
+td.multdiv_highlighted_target {
     font-size: var(--hoverFontSize);
+    font-weight: bold;
+}
+
+div.multdiv_tooltip {
+    /* display: flex; */
+    flex-direction: row;
+    justify-content:space-around;
+
+    width: max-content;
+    
+    background-color: var(--hoverBGColor);
+    color: var(--hoverColor);
+
+    border: 2px solid black;
+    border-radius: 2px 16px 16px 16px;
+    box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 70px 4px;
+    
+    padding: 5px 10px 5px 10px;
+    
+    text-align: center; 
+    word-wrap: normal;
+    pointer-events: none;
+
+    position: absolute;
+    top:40px;
+    left:40px;
+    z-index: 1;
+}
+
+b.multdiv_tooltip_text {
+    height: max-content;
+    width: max-content;
+    border: 0;
+    padding: 0;
+    margin: 0;
+}
+
+hr.multdiv_tooltip_line {
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+hr.multdiv_tooltip_line_bold {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-top: 3px solid black;
 }
