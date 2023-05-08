@@ -12,22 +12,17 @@ import { NavLink } from "react-router-dom";
 export default function Navbar() {
    return (
       <div>
-         <nav className="navbar navbar-expand-lg">
-            <NavLink className="navbar-brand" to="/">
-               <ul className="imc_navbar_title_ul">
+         <nav className="navbar navbar-expand-lg imc_nav">
+            <ul className="imc_navbar_title_ul">
+               <NavLink className="navbar-brand imc_navbar_navlink" to="/">
                   <li className="imc_navbar_title_li">Interactive</li>
                   <li className="imc_navbar_title_li">Math</li>
                   <li className="imc_navbar_title_li">Charts</li>
-               </ul>
-            </NavLink>
-            <div className="collapse navbar-collapse" id="navbarSupportedContent">
+               </NavLink>
+            </ul>
+            <div className="collapse navbar-collapse">
                <ul className="navbar-nav ml-auto">
                   <li className="nav-item imc_navbar_navlink_li first">
-                     <NavLink className="nav-link imc_navbar_navlink" to="/create">
-                        Create Record
-                     </NavLink>
-                  </li>
-                  <li className="nav-item imc_navbar_navlink_li">
                      <NavLink className="nav-link imc_navbar_navlink" to="/multdivchart">
                         Multiplication & Division Table
                      </NavLink>

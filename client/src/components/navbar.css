@@ -1,7 +1,13 @@
+div > nav.imc_nav {
+    padding: 8px;
+}
+
 ul.imc_navbar_title_ul {
     padding-left: 0;
     border: 2px solid black;
     text-align: center;
+    margin: 0;
+    margin-right: 20px;
 }
 
 li.imc_navbar_title_li {
@@ -18,6 +24,11 @@ li.imc_navbar_navlink_li.first {
     border-left: 2px solid black;
 }
 
+a.imc_navbar_navlink {
+    display:flex;
+    flex-direction: column;
+    width: 100%;
+}
 
 a.imc_navbar_navlink.active {
     background-color: rgba(0,255,255,0.5)

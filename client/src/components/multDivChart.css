@@ -5,13 +5,9 @@
     --titleFontSize: 32px;
     --titleFontBGColor:rgba(0, 0, 0, .2);
 
-    --inputColor: black;
-    --inputFontSize: large;
-    
     --tableFontFamily: arial, sans-serif;
     --tableFontSize: 20px;
     --cellWidth: 50px;
-    --cellHeight: 50px;
 
     --headerCellBGColor: lightblue;
     --headerCellColor: blue;
@@ -20,9 +16,6 @@
     --hoverBGColor: yellow;
     --hoverColor: blue;
     --hoverFontSize: 23px;
-
-    --errZorBGColor: red;
-    --errorColor: black;
 }
 
 .multdiv_display_flex {
@@ -56,10 +49,22 @@ h1.multdiv_h1 {
     background-color: var(--titleFontBGColor);
 }
 
+div.multdiv_options_div {
+    border: 2px solid black;
+    border-bottom: 0;
+    width: fit-content;
+    padding: 5px;
+}
+
+b.multdiv_options_b {
+    width: 210px;
+}
+
 ul.multdiv_ul {
     display: flex;
     padding-left: 0px;
     margin: 0;
+    width: fit-content;
 }
 
 li.multdiv_li {

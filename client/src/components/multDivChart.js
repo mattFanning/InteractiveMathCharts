@@ -15,6 +15,9 @@ export default function MultDivChart() {
       targetElement: ""
    });
 
+   const [colorRecords, setColorRecords] = useState([]);
+
+   const [colorChoice, setColorChoice] = useState("Default");
 
    //when dimensions are updated, call this to fill in cellData.
    useEffect(() => {
@@ -33,8 +36,140 @@ export default function MultDivChart() {
       return;
    },[dimensions.cols, dimensions.rows]);
 
+   //used to fetch our records from the DB.
+   useEffect(() => {
+      async function getColorRecords() {
+         const response = await fetch(`http://localhost:5000/multDivTable/`);
+     
+         if (!response.ok) {
+           const message = `An error occurred: ${response.statusText}`;
+           window.alert(message);
+           return;
+         }
+     
+         const records = await response.json();
+         setColorRecords(records);
+      }
+     
+      getColorRecords();
+   },[colorRecords.length]);
+   
+   //used to adjust color theme 
+   useEffect(() => {
+      function writeStyleVariables() {
+         if(colorRecords.length === 0 || colorChoice === "") {
+            return;
+         }
+         const colorRecord = colorRecords.filter(record => 
+            record.desc === colorChoice
+         )[0];
+
+   
+         //title
+         if(colorRecord.titleFontColor != null) {
+            document.documentElement.style.setProperty('--titleFontColor',colorRecord.titleFontColor);   
+         }
+   
+         if(colorRecord.titleFontBGColor != null) {
+            document.documentElement.style.setProperty('--titleFontBGColor',colorRecord.titleFontBGColor);   
+         }
+   
+         if(colorRecord.titleFontSize != null) {
+            document.documentElement.style.setProperty('--titleFontSize',colorRecord.titleFontSize);   
+         }
+   
+         //header
+         if(colorRecord.headerCellBGColor != null) {
+            document.documentElement.style.setProperty('--headerCellBGColor',colorRecord.headerCellBGColor);   
+         }
+   
+         if(colorRecord.headerCellColor != null) {
+            document.documentElement.style.setProperty('--headerCellColor',colorRecord.headerCellColor);   
+         }
+   
+         if(colorRecord.headerFontSize != null) {
+            document.documentElement.style.setProperty('--headerFontSize',colorRecord.headerFontSize);   
+         }
+   
+          //hover
+          if(colorRecord.hoverBGColor != null) {
+            document.documentElement.style.setProperty('--hoverBGColor',colorRecord.hoverBGColor);   
+         }
+   
+         if(colorRecord.hoverColor != null) {
+            document.documentElement.style.setProperty('--hoverColor',colorRecord.hoverColor);   
+         }
+   
+         if(colorRecord.hoverFontSize != null) {
+            document.documentElement.style.setProperty('--hoverFontSize',colorRecord.hoverFontSize);   
+         }
+      };
+      writeStyleVariables();
+   },[colorChoice, colorRecords]);
 
    //subcomponents
+   function title() {
+      return (
+         <h1 className="multdiv_h1">Interactive Multiplication and Division Chart</h1>
+      );
+   };
+
+   function options() {
+      return(
+        <div className="multdiv_options_div">
+         <ul className="multdiv_ul">
+            <li className="multdiv_li padding-right">
+               <b className="multdiv_options_b">Change table dimensions: </b>
+            </li>
+            <li className="multdiv_li">
+               <input type="number" className="multdiv_input" name="X" 
+                  min="1" max="20" value={dimensions.cols} onKeyDown={()=>{return false}} onChange={event => 
+                     setDimensions({rows: dimensions.rows, cols: parseInt(event.target.value)})
+                  }>
+               </input>
+            </li>
+            <li className="multdiv_li">
+               <b>X</b>
+            </li>
+            <li className="multdiv_li">
+               <input type="number" className="multdiv_input" name="Y" 
+                  min="1" max="20" value={dimensions.rows} onKeyDown={()=>{return false}} onChange={event =>
+                     setDimensions({rows:  parseInt(event.target.value), cols: dimensions.cols})
+                  }>
+               </input>
+            </li>
+         </ul>
+         <ul className="multdiv_ul">
+            <li className="multdiv_li padding-right">
+               <b className="multdiv_options_b">Pick a color theme: </b>
+            </li>
+            <li className="multdiv_li">
+               <select className="multdiv_options_select" onChange={event => 
+                  setColorChoice(event.target.value)}>
+                  {colorChoiceOptions()}
+               </select>
+            </li>
+         </ul>
+        </div>
+        
+      );
+   };
+
+   function colorChoiceOptions() {
+      const choices = colorRecords.map(record => {
+         if(record.desc !== "Default") {
+            return (
+               <option key={record._id} value={record.desc}>{record.desc}</option>
+            );
+         } else {
+            return false;
+         }
+         
+      });
+      choices.unshift(<option key="default" value="Default">Default</option>);
+      return choices;
+   };
+
    function tableHeaderRow() {
       return (
          <tr>
@@ -76,7 +211,7 @@ export default function MultDivChart() {
    function hoverTooltip() {
       const {int1, int2, callerElement} = tooltipData;
 
-      if(int1 == "" || int2 == "") {
+      if(int1 === "" || int2 === "") {
          return("");  //don't show the hover div at all.
       } else {
          const cellWidth = parseInt(getComputedStyle(callerElement).getPropertyValue('--cellWidth'));
@@ -94,7 +229,7 @@ export default function MultDivChart() {
    };
 
    function mathEquations(int1, int2, result) {
-      if(int1 == int2) {
+      if(int1 === int2) {
          return (
             <div>
                <b className="multdiv_tooltip_text">{int1} x {int2} = {result} </b>
@@ -163,28 +298,8 @@ export default function MultDivChart() {
    //component's body
    return (
       <div className="multdiv_div">
-         <ul className="multdiv_ul">
-            <li className="multdiv_li padding-right">
-               <b>Change table dimensions: </b>
-            </li>
-            <li className="multdiv_li">
-               <input type="number" className="multdiv_input" name="X" 
-                  min="1" max="20" value={dimensions.cols} onKeyDown={()=>{return false}} onChange={event => 
-                     setDimensions({rows: dimensions.rows, cols: parseInt(event.target.value)})
-                  }>
-               </input>
-            </li>
-            <li className="multdiv_li">
-               <b>X</b>
-            </li>
-            <li className="multdiv_li">
-               <input type="number" className="multdiv_input" name="Y" 
-                  min="1" max="20" value={dimensions.rows} onKeyDown={()=>{return false}} onChange={event =>
-                     setDimensions({rows:  parseInt(event.target.value), cols: dimensions.cols})
-                  }>
-               </input>
-            </li>
-         </ul>
+         {title()}
+         {options()}
          <table className="multdiv_table">
             <thead>
                {tableHeaderRow()}
