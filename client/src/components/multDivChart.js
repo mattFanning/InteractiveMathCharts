@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import "./multDivChart.css";
 
 export default function MultDivChart() {
    //states
@@ -64,44 +65,45 @@ export default function MultDivChart() {
             record.desc === colorChoice
          )[0];
 
-   
+         const componentRoot = document.querySelector('.multdiv_div');
+
          //title
          if(colorRecord.titleFontColor != null) {
-            document.documentElement.style.setProperty('--titleFontColor',colorRecord.titleFontColor);   
+            componentRoot.style.setProperty('--titleFontColor',colorRecord.titleFontColor);   
          }
    
          if(colorRecord.titleFontBGColor != null) {
-            document.documentElement.style.setProperty('--titleFontBGColor',colorRecord.titleFontBGColor);   
+            componentRoot.style.setProperty('--titleFontBGColor',colorRecord.titleFontBGColor);   
          }
    
          if(colorRecord.titleFontSize != null) {
-            document.documentElement.style.setProperty('--titleFontSize',colorRecord.titleFontSize);   
+            componentRoot.style.setProperty('--titleFontSize',colorRecord.titleFontSize);   
          }
    
          //header
          if(colorRecord.headerCellBGColor != null) {
-            document.documentElement.style.setProperty('--headerCellBGColor',colorRecord.headerCellBGColor);   
+            componentRoot.style.setProperty('--headerCellBGColor',colorRecord.headerCellBGColor);   
          }
    
          if(colorRecord.headerCellColor != null) {
-            document.documentElement.style.setProperty('--headerCellColor',colorRecord.headerCellColor);   
+            componentRoot.style.setProperty('--headerCellColor',colorRecord.headerCellColor);   
          }
    
          if(colorRecord.headerFontSize != null) {
-            document.documentElement.style.setProperty('--headerFontSize',colorRecord.headerFontSize);   
+            componentRoot.style.setProperty('--headerFontSize',colorRecord.headerFontSize);   
          }
    
           //hover
           if(colorRecord.hoverBGColor != null) {
-            document.documentElement.style.setProperty('--hoverBGColor',colorRecord.hoverBGColor);   
+            componentRoot.style.setProperty('--hoverBGColor',colorRecord.hoverBGColor);   
          }
    
          if(colorRecord.hoverColor != null) {
-            document.documentElement.style.setProperty('--hoverColor',colorRecord.hoverColor);   
+            componentRoot.style.setProperty('--hoverColor',colorRecord.hoverColor);   
          }
    
          if(colorRecord.hoverFontSize != null) {
-            document.documentElement.style.setProperty('--hoverFontSize',colorRecord.hoverFontSize);   
+            componentRoot.style.setProperty('--hoverFontSize',colorRecord.hoverFontSize);   
          }
       };
       writeStyleVariables();
@@ -258,7 +260,7 @@ export default function MultDivChart() {
    function highlightHover(event) {
       const target = event.target;
       target.classList.add("multdiv_highlighted_target");
-      
+
       //table cell highlighting
       const colId = target.getAttribute('data-col');
       let affectedCells = document.querySelectorAll(`[data-col='${colId}']`);

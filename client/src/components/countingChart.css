@@ -1,10 +1,10 @@
-.multdiv_display_flex {
+.counting_display_flex {
     display: flex;
 }
 
-div.multdiv_div {
+div.counting_div {
     padding: 10px; 
-    
+      
     --titleFontColor: rgb(255, 255, 255);
     --titleFontSize: 32px;
     --titleFontBGColor:rgba(0, 0, 0, .2);
@@ -20,45 +20,45 @@ div.multdiv_div {
     --hoverBGColor: yellow;
     --hoverColor: blue;
     --hoverFontSize: 23px;
-}
+   }
 
-div.multdiv_div * {
+div.counting_div * {
     align-items: center;
 }
 
-h1.multdiv_h1 {
+h1.counting_h1 {
     color: var(--titleFontColor);
     font-size: var(--titleFontSize);
     background-color: var(--titleFontBGColor);
 }
 
-div.multdiv_options_div {
+div.counting_options_div {
     border: 2px solid black;
     border-bottom: 0;
     width: fit-content;
     padding: 5px;
 }
 
-ul.multdiv_ul {
+ul.counting_ul {
     display: flex;
     padding-left: 0px;
     margin: 0;
     width: fit-content;
 }
 
-li.multdiv_li {
+li.counting_li {
     display: flex;
 }
 
-b.multdiv_options_b {
+b.counting_options_b {
     width: 210px;
 }
 
-input.multdiv_input {
+input.counting_input {
     overflow-y:scroll;
 }
 
-input.multdiv_input::-webkit-inner-spin-button {
+input.counting_input::-webkit-inner-spin-button {
     opacity: 1
 }
 
@@ -66,39 +66,44 @@ input.multdiv_input::-webkit-inner-spin-button {
     padding-right: 10px;
 }
 
-table.multdiv_table {
+table.counting_table {
     font-family: var(--tableFontFamily);
     font-size: var(--tableFontSize);
-    text-align: center;
+    text-align: center;    
 }
 
 
-th.multdiv_th {
+tr.counting_tr {
     border: 2px solid black;
-    width: var(--cellWidth);
-    height: var(--cellWidth);
-    background-color: var(--headerCellBGColor);
-    color: var(--headerCellColor);
 }
 
-td.multdiv_td {
+td.counting_td {
     border: 2px solid black;
     width: var(--cellWidth);
     height: var(--cellWidth);
 }
 
-th.multdiv_highlighted,
-td.multdiv_highlighted {
-    background-color: var(--hoverBGColor);
+
+td.counting_td.ten {   
+    /* border: 1px dotted rgba(0,0,0,.1); */
+    border: 0;
+    
     color: var(--hoverColor);
+    background-color: var(--hoverBGColor);
 }
 
-td.multdiv_highlighted_target {
+td.counting_td.hidefont {
+    font-size: 0;
+}
+
+td.counting_td.one {
     font-size: var(--hoverFontSize);
-    font-weight: bold;
-}
+    color: var(--hoverBGColor);
+    background-color: var(--hoverColor);
+}   
 
-div.multdiv_tooltip {
+
+div.counting_tooltip {
     /* display: flex; */
     flex-direction: row;
     justify-content:space-around;
@@ -124,7 +129,7 @@ div.multdiv_tooltip {
     z-index: 1;
 }
 
-b.multdiv_tooltip_text {
+b.counting_tooltip_text {
     height: max-content;
     width: max-content;
     border: 0;
@@ -132,18 +137,29 @@ b.multdiv_tooltip_text {
     margin: 0;
 }
 
-hr.multdiv_tooltip_line {
-    margin-top: 2px;
-    margin-bottom: 2px;
+div.counting_tooltip_text_group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-hr.multdiv_tooltip_line_bold {
+
+
+hr.counting_tooltip_line {
+    margin-top: 2px;
+    margin-bottom: 2px;
+    width: 100%;
+    
+}
+
+hr.counting_tooltip_line_bold {
     margin-top: 10px;
     margin-bottom: 10px;
+    width: 100%;
     border-top: 3px solid black;
 }
 
-div.multdiv_bottom_padding {
+div.counting_bottom_padding {
     height: 125px;
     visibility: hidden;
 }

@@ -7,6 +7,7 @@ import { Route, Routes } from "react-router-dom";
 import Navbar from "./components/navbar";
 import Welcome from "./components/welcome";
 import MultDivChart from "./components/multDivChart";
+import CountingChart from "./components/countingChart";
 
 const App = () => {
    return (
@@ -15,6 +16,7 @@ const App = () => {
          <Routes>
             <Route exact path="/" element={<Welcome />} />
             <Route path="/multdivchart" element={<MultDivChart />} />
+            <Route path="/countingchart" element={<CountingChart />} />
          </Routes>
       </div>
    );

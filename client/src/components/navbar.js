@@ -3,7 +3,6 @@ import React from "react";
 // We import bootstrap to make our application look better.
 import "bootstrap/dist/css/bootstrap.css";
 import "./navbar.css"
-import "./multDivChart.css";
 
 // We import NavLink to utilize the react router.
 import { NavLink } from "react-router-dom";
@@ -25,6 +24,11 @@ export default function Navbar() {
                   <li className="nav-item imc_navbar_navlink_li first">
                      <NavLink className="nav-link imc_navbar_navlink" to="/multdivchart">
                         Multiplication & Division Table
+                     </NavLink>
+                  </li>
+                  <li className="nav-item imc_navbar_navlink_li">
+                     <NavLink className="nav-link imc_navbar_navlink" to="/countingChart">
+                        Counting & Grouping Chart
                      </NavLink>
                   </li>
                </ul>

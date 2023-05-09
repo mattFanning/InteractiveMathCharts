@@ -1,3 +1,16 @@
+:root {
+    --navbarBGImage: url('../../public/navbarImage.jpg');
+}
+
+nav.navbar {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    background-image: var(--navbarBGImage);
+    padding-bottom: 0;
+    padding-left: 8px;
+}
+
 div > nav.imc_nav {
     padding: 8px;
 }
