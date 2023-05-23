@@ -31,6 +31,11 @@ export default function Navbar() {
                         Counting & Grouping Chart
                      </NavLink>
                   </li>
+                  <li className="nav-item imc_navbar_navlink_li">
+                     <NavLink className="nav-link imc_navbar_navlink" to="/addsubchart">
+                        Addition & Subtraction Forum
+                     </NavLink>
+                  </li>
                </ul>
             </div>
          </nav>

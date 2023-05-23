@@ -8,6 +8,7 @@ import Navbar from "./components/navbar";
 import Welcome from "./components/welcome";
 import MultDivChart from "./components/multDivChart";
 import CountingChart from "./components/countingChart";
+import AddSubChart from "./components/addSubChart";
 
 const App = () => {
    return (
@@ -17,6 +18,7 @@ const App = () => {
             <Route exact path="/" element={<Welcome />} />
             <Route path="/multdivchart" element={<MultDivChart />} />
             <Route path="/countingchart" element={<CountingChart />} />
+            <Route path="/addsubchart" element={<AddSubChart />} />
          </Routes>
       </div>
    );

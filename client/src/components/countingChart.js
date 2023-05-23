@@ -8,7 +8,7 @@ export default function CountingChart() {
    const [cellData, setCellData] = useState([[1]]); // 2d array
    
    const [colorRecords, setColorRecords] = useState([]);
-   const [colorChoice, setColorChoice] = useState("Default");
+   const [colorChoice, setColorChoice] = useState("Balloon");
 
    const [tooltipData, setTooltipData] = useState({});
 
@@ -145,7 +145,7 @@ export default function CountingChart() {
 
    function colorChoiceOptions() {
       const choices = colorRecords.map(record => {
-         if(record.desc !== "Default") {
+         if(record.desc !== "Balloon") {
             return (
                <option key={record._id} value={record.desc}>{record.desc}</option>
             );
@@ -154,7 +154,7 @@ export default function CountingChart() {
          }
          
       });
-      choices.unshift(<option key="default" value="Default">Default</option>);
+      choices.unshift(<option key="balloon" value="Balloon">Balloon</option>);
       return choices;
    }
 
